@@ -14,7 +14,7 @@ Returns a `GifStop` object
 ```js
 imgs = document.getElementsByTagName('IMG');
 
-// Play the gif and stop after five seconds
+// Play the gifs and stop after five seconds
 gifs = gifStop(imgs, {
     playOn: 'click',
     onReady: function(gif){
@@ -44,7 +44,7 @@ gifs.destroy()
 Option | Default | type | Description
 --- | --- | --- | ---
 `playOn` | `hover`  | `string`  | Whether you want the gif played on hover or click. Can be set to `hover` or `click`.
-`className` | `gif-playing` | `string` | The array you want added to the gif when it is playing.
+`className` | `gif-playing` | `string` | The class you want added to the image when it is playing.
 `onPlay` | `null` | `function` | The function is called when the gif is played. It is passed a Gif object.
 `onStop` | `null` | `function` | The function is called when the gif is stopped. It is passed a Gif object.
 `onReady` | `null` | `function` | The function is called when the gif is loaded and ready to be stopped. It is passed a Gif object.
@@ -55,7 +55,7 @@ This takes similar options as `gifStop` and `setConfig`. The main difference is 
 
 Option | Default | type | Description
 --- | --- | --- | ---
-`className` | `gif-playing` | `string` | The array you want added to the gif when it is playing.
+`className` | `gif-playing` | `string` | The class you want added to the image when it is playing.
 `onPlay` | `null` | `function` | The function is called when the gif is played. It is passed a Gif object.
 `onStop` | `null` | `function` | The function is called when the gif is stopped. It is passed a Gif object.
 `onReady` | `null` | `function` | The function is called when the gif is loaded and ready to be stopped. It is passed a Gif object.
