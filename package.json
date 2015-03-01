@@ -2,7 +2,7 @@
   "name": "gif-stop",
   "version": "0.0.1",
   "description": "Simply play and pause gifs",
-  "main": "index.js",
+  "main": "dist/gifStop.min.js",
   "scripts": {},
   "repository": {
     "type": "git",
