@@ -12,7 +12,7 @@ Simply play and pause gifs
 Returns a `GifStop` object
 
 ```js
-imgs = document.getElementsByTagName('IMG');
+imgs = document.getElementsByTagName('img');
 
 // Play the gifs and stop after five seconds
 gifs = gifStop(imgs, {
@@ -27,7 +27,7 @@ gifs = gifStop(imgs, {
 ```
 
 ```js
-imgs = document.getElementsByTagName('IMG');
+imgs = document.getElementsByTagName('img');
 
 gifs = gifStop(imgs)
 
