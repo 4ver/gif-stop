@@ -17,10 +17,10 @@ imgs = document.getElementsByTagName('img');
 // Play the gifs and stop after five seconds
 gifs = gifStop(imgs, {
     playOn: 'click',
-    onReady: function(gif){
-        gif.play()
-        setTimout(function(){
-            gif.stop()
+    onReady: function (gif) {
+        gif.play();
+        setTimout(function () {
+            gif.stop();
         }, 5000)
     }
 });
@@ -29,14 +29,14 @@ gifs = gifStop(imgs, {
 ```js
 imgs = document.getElementsByTagName('img');
 
-gifs = gifStop(imgs)
+gifs = gifStop(imgs);
 
 // Plays all gifs
-gifs.play()
+gifs.play();
 // Stops all gifs
-gifs.stop()
+gifs.stop();
 // Removes event handlers
-gifs.destroy()
+gifs.destroy();
 ```
 
 ### gifStop.setConfig([object])
