@@ -12,7 +12,7 @@ module.exports = class Gif
 
         @getConfig = -> config
 
-        @isStopped = false
+        @isStopped = true
         @ready = false
         @animatedSource = @img.src
 
@@ -27,7 +27,10 @@ module.exports = class Gif
 
         errorLoadingImage = false
 
+        @isLoaded = false
+
         onLoaded = =>
+            return if @isLoaded
             canvas.width = @img.naturalWidth
             canvas.height = @img.naturalHeight
 
@@ -35,9 +38,12 @@ module.exports = class Gif
 
             @stoppedSource = canvas.toDataURL()
 
-            @stop()
+            if @isStopped then @stop(true) else @play(true)
+
             @ready = true
+            @isLoaded = true
             config.onReady(this) if config.onReady?
+
 
         checkIsLoaded = ->
             return if errorLoadingImage
@@ -51,16 +57,16 @@ module.exports = class Gif
 
         canvasImage.src = @animatedSource
 
-    play: () =>
-        return unless @isStopped
+    play: (force=false) =>
+        return unless @isStopped or force
         config = @getConfig()
         @img.src = @animatedSource
         @img.classList.add config.className
         @isStopped = false
         config.onPlay this if config.onPlay?
 
-    stop: () =>
-        return if @isStopped
+    stop: (force=false) =>
+        return if @isStopped and not force
         config = @getConfig()
         @img.src = @stoppedSource
         @img.classList.remove config.className

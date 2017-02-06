@@ -95,7 +95,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	gifStop.prototype.gif = (function(_this) {
 	  return function(node, options) {
-	    return new Gif(node, defaultConfig);
+	    return new Gif(node, options, defaultConfig);
 	  };
 	})(this);
 
@@ -253,7 +253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.getConfig = function() {
 	      return config;
 	    };
-	    this.isStopped = false;
+	    this.isStopped = true;
 	    this.ready = false;
 	    this.animatedSource = this.img.src;
 	    this.img.classList.add('gifStop');
@@ -262,14 +262,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    canvasImage = new Image();
 	    canvasImage.crossOrigin = "anonymous";
 	    errorLoadingImage = false;
+	    this.isLoaded = false;
 	    onLoaded = (function(_this) {
 	      return function() {
+	        if (_this.isLoaded) {
+	          return;
+	        }
 	        canvas.width = _this.img.naturalWidth;
 	        canvas.height = _this.img.naturalHeight;
 	        canvasContext.drawImage(canvasImage, 0, 0);
 	        _this.stoppedSource = canvas.toDataURL();
-	        _this.stop();
+	        if (_this.isStopped) {
+	          _this.stop(true);
+	        } else {
+	          _this.play(true);
+	        }
 	        _this.ready = true;
+	        _this.isLoaded = true;
 	        if (config.onReady != null) {
 	          return config.onReady(_this);
 	        }
@@ -292,9 +301,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    canvasImage.src = animatedSource;
 	  }
 
-	  Gif.prototype.play = function() {
+	  Gif.prototype.play = function(force) {
 	    var config;
-	    if (!this.isStopped) {
+	    if (force == null) {
+	      force = false;
+	    }
+	    if (!(this.isStopped || force)) {
 	      return;
 	    }
 	    config = this.getConfig();
@@ -306,9 +318,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  };
 
-	  Gif.prototype.stop = function() {
+	  Gif.prototype.stop = function(force) {
 	    var config;
-	    if (this.isStopped) {
+	    if (force == null) {
+	      force = false;
+	    }
+	    if (this.isStopped && !force) {
 	      return;
 	    }
 	    config = this.getConfig();
