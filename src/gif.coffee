@@ -49,7 +49,7 @@ module.exports = class Gif
         canvasImage.onload = checkIsLoaded
         canvasImage.onerror = onErrorLoading
 
-        canvasImage.src = animatedSource
+        canvasImage.src = @animatedSource
 
     play: () =>
         return unless @isStopped
