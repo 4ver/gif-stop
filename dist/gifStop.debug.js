@@ -298,7 +298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    canvasImage.onload = checkIsLoaded;
 	    canvasImage.onerror = onErrorLoading;
-	    canvasImage.src = animatedSource;
+	    canvasImage.src = this.animatedSource;
 	  }
 
 	  Gif.prototype.play = function(force) {
