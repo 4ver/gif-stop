@@ -19,7 +19,7 @@ gifs = gifStop(imgs, {
     playOn: 'click',
     onReady: function (gif) {
         gif.play();
-        setTimout(function () {
+        setTimeout(function () {
             gif.stop();
         }, 5000)
     }
